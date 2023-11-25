@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Random</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="feedback_label">Feedback</string>
+    <string name="rate_label">Rate</string>
+    <string name="share_label">Share</string>
 </resources>
