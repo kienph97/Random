@@ -5,6 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
+    <LinearLayout
+        android:id="@+id/llTop"
+        android:background="@drawable/shape_bg_top_home"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp80"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/imvMenu"
+            android:layout_marginStart="@dimen/dp15"
+            android:src="@drawable/ic_menu"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvItemHome"
+        app:layout_constraintTop_toBottomOf="@+id/llTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:id="@+id/llNavigationDrawer"
@@ -12,6 +34,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:visibility="gone"
+        android:background="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/viewHide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -92,6 +115,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/llNavigationDrawer"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
