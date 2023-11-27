@@ -5,4 +5,10 @@
     <string name="rate_label">Rate</string>
     <string name="share_label">Share</string>
     <string name="lucky_number_label">Lucky Number</string>
+    <string name="yes_or_no_label">Yes Or No</string>
+    <string name="choose_item_label">Choose Item</string>
+    <string name="RPS_label">R-P-S</string>
+    <string name="coin_label">Coin</string>
+    <string name="color_label">Color</string>
+    <string name="dice_roller_label">Dice Roller</string>
 </resources>

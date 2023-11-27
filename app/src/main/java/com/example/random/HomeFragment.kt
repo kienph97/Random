@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.random.databinding.FragmentHomeBinding
 
 private const val ARG_PARAM1 = "param1"
@@ -13,7 +14,7 @@ private const val ARG_PARAM2 = "param2"
 
 class HomeFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentHomeBinding? = null
-
+    private val mHomeAdapter by lazy { HomeAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +25,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        initView()
         initListener()
         return mBinding?.root
     }
@@ -31,6 +33,18 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
     private fun initListener() {
         mBinding?.imvMenu?.setOnClickListener(this)
         mBinding?.viewHide?.setOnClickListener(this)
+    }
+
+    private fun initView() {
+        context?.let { HomeModel().getListItem(it) }?.let { mHomeAdapter.setData(it) }
+        mBinding?.rcvItemHome?.apply {
+            adapter = mHomeAdapter
+            layoutManager = LinearLayoutManager(
+                context,
+                LinearLayoutManager.VERTICAL,
+                false
+            )
+        }
     }
 
     override fun onClick(view: View?) {
