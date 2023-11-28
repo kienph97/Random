@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.random.databinding.FragmentHomeBinding
 
@@ -44,6 +45,32 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
                 LinearLayoutManager.VERTICAL,
                 false
             )
+        }
+
+        mHomeAdapter.setCallBackClickItem {
+            when(it) {
+                1 -> {
+                    navigateToNewScreen(R.id.action_homeFragment_to_luckyNumberFragment)
+                }
+                2 -> {
+
+                }
+                3 -> {
+
+                }
+                4 -> {
+
+                }
+                5 -> {
+
+                }
+                6 -> {
+
+                }
+                7 -> {
+
+                }
+            }
         }
     }
 

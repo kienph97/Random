@@ -10,10 +10,15 @@ import com.example.random.databinding.LayoutItemHomeBinding
 
 class HomeAdapter: RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     private var mListData = arrayListOf<HomeModel>()
+    var mCallBackClickItem: ((Int) -> Unit)? = null
 
     fun setData(list: ArrayList<HomeModel>) {
         mListData.clear()
         mListData.addAll(list)
+    }
+
+    fun setCallBackClickItem(callback: (Int) -> Unit) {
+        mCallBackClickItem = callback
     }
 
     inner class HomeViewHolder(private val itemHomeBinding: LayoutItemHomeBinding): RecyclerView.ViewHolder(itemHomeBinding.root) {
@@ -21,6 +26,11 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
             itemHomeBinding.apply {
                 imvIcon.setImageResource(item.icon)
                 tvTitle.text = item.title
+                root.apply {
+                    setOnClickListener {
+                        mCallBackClickItem?.invoke(item.id)
+                    }
+                }
             }
         }
     }

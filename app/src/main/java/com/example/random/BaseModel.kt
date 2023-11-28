@@ -1,5 +1,5 @@
 package com.example.random
 
 open class BaseModel {
-    var id: Int? = null
+    open val id: Int = 1
 }
