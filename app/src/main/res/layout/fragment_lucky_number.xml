@@ -1,14 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".LuckyNumberFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llResult"
+        android:gravity="center"
+        android:background="@drawable/bg_show_result"
+        android:layout_margin="@dimen/dp10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/llRange"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp" >
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tvError"
+            android:visibility="gone"
+            android:text="@string/enter_wrong_label"
+            android:textStyle="italic"
+            android:textSize="@dimen/sp16"
+            android:textColor="@color/colorF44336"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:text="@string/result_label"
+            android:textColor="@color/color03A9F4"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp85"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llRange"
+        android:layout_marginHorizontal="@dimen/dp10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llResult"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/dp10"
+        app:layout_constraintBottom_toTopOf="@+id/tvLuckyNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:textSize="@dimen/sp20"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="@string/start_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/edtStart"
+            android:hint="@string/enter_here_label"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp60"/>
+
+        <TextView
+            android:textSize="@dimen/sp20"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/to_label" />
+
+        <EditText
+            android:id="@+id/edtEnd"
+            android:hint="@string/enter_here_label"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp60"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/tvLuckyNumber"
+        android:layout_marginBottom="@dimen/dp40"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/sp23"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginHorizontal="@dimen/dp10"
+        android:textColor="@color/white"
+        android:paddingVertical="@dimen/dp10"
+        android:background="@drawable/bg_button_go"
+        android:text="@string/lucky_number_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

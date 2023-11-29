@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.random.databinding.FragmentLuckyNumberBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,16 +17,18 @@ private const val ARG_PARAM2 = "param2"
  * Use the [LuckyNumberFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class LuckyNumberFragment : Fragment() {
+class LuckyNumberFragment : BaseFragment() {
+    private var mBinding: FragmentLuckyNumberBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mBinding = FragmentLuckyNumberBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_lucky_number, container, false)
+        return mBinding?.root
     }
 }
