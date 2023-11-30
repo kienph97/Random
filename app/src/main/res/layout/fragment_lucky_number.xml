@@ -59,6 +59,7 @@
         <EditText
             android:id="@+id/edtStart"
             android:hint="@string/enter_here_label"
+            android:inputType="number"
             android:layout_marginHorizontal="@dimen/dp20"
             android:layout_width="@dimen/dp100"
             android:layout_height="@dimen/dp60"/>
@@ -73,6 +74,7 @@
 
         <EditText
             android:id="@+id/edtEnd"
+            android:inputType="number"
             android:hint="@string/enter_here_label"
             android:layout_marginHorizontal="@dimen/dp20"
             android:layout_width="@dimen/dp100"

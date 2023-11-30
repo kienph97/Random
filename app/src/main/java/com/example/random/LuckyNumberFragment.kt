@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.example.random.databinding.FragmentLuckyNumberBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -17,8 +18,9 @@ private const val ARG_PARAM2 = "param2"
  * Use the [LuckyNumberFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class LuckyNumberFragment : BaseFragment() {
+class LuckyNumberFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentLuckyNumberBinding? = null
+    private var mLuckyNumberViewModel: LuckyNumberViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,44 @@ class LuckyNumberFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        mLuckyNumberViewModel = LuckyNumberViewModel()
+        initListener()
+        initObserver()
         return mBinding?.root
     }
+
+    private fun initListener() {
+        mBinding?.tvLuckyNumber?.setOnClickListener(this)
+    }
+    override fun onClick(view: View?) {
+        when(view?.id) {
+            R.id.tvLuckyNumber -> {
+                handleFindNumber()
+            }
+        }
+    }
+
+    private fun handleFindNumber() {
+        val start = mBinding?.edtStart?.text.toString().replace(" ", "")
+        val end = mBinding?.edtEnd?.text.toString().replace(" ", "")
+        if (start.isNotEmpty() && end.isNotEmpty() && start.toInt() < end.toInt()) {
+            mLuckyNumberViewModel?.getLuckyNumber(start.toInt(), end.toInt())
+        } else {
+            mBinding?.apply {
+                tvResult.isVisible = false
+                tvError.isVisible = true
+            }
+        }
+    }
+
+    private fun initObserver() {
+        mLuckyNumberViewModel?.getLuckyNumberLiveData()?.observe(viewLifecycleOwner) {
+            mBinding?.apply {
+                tvResult.isVisible = true
+                tvResult.text = it.toString()
+                tvError.isVisible = false
+            }
+        }
+    }
+
 }
