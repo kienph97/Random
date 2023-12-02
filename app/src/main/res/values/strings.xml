@@ -16,4 +16,6 @@
     <string name="enter_here_label">Enter here</string>
     <string name="enter_wrong_label">Enter wrong</string>
     <string name="result_label">Result</string>
+    <string name="yes_label">Yes</string>
+    <string name="no_label">No</string>
 </resources>

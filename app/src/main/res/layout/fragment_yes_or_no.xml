@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".YesOrNoFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llResult"
+        android:gravity="center"
+        android:background="@drawable/bg_show_result"
+        android:layout_margin="@dimen/dp10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvYesOrNo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" >
+
+        <TextView
+            android:id="@+id/tvError"
+            android:visibility="gone"
+            android:text="@string/enter_wrong_label"
+            android:textStyle="italic"
+            android:textSize="@dimen/sp16"
+            android:textColor="@color/colorF44336"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:text="@string/result_label"
+            android:textColor="@color/color03A9F4"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp85"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/tvYesOrNo"
+        android:layout_marginBottom="@dimen/dp40"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/sp23"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginHorizontal="@dimen/dp10"
+        android:textColor="@color/white"
+        android:paddingVertical="@dimen/dp10"
+        android:background="@drawable/bg_button_go"
+        android:text="@string/yes_or_no_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

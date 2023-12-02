@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_homeFragment_to_luckyNumberFragment"
             app:destination="@id/luckyNumberFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_yesOrNoFragment"
+            app:destination="@id/yesOrNoFragment" />
     </fragment>
     <fragment
         android:id="@+id/luckyNumberFragment"
         android:name="com.example.random.LuckyNumberFragment"
         android:label="fragment_lucky_number"
         tools:layout="@layout/fragment_lucky_number" />
+    <fragment
+        android:id="@+id/yesOrNoFragment"
+        android:name="com.example.random.YesOrNoFragment"
+        android:label="fragment_yes_or_no"
+        tools:layout="@layout/fragment_yes_or_no" />
 </navigation>

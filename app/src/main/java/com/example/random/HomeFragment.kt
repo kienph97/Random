@@ -53,7 +53,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
                     navigateToNewScreen(R.id.action_homeFragment_to_luckyNumberFragment)
                 }
                 2 -> {
-
+                    navigateToNewScreen(R.id.action_homeFragment_to_yesOrNoFragment)
                 }
                 3 -> {
 
