@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_yesOrNoFragment"
             app:destination="@id/yesOrNoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_RPSFragment"
+            app:destination="@id/RPSFragment" />
     </fragment>
     <fragment
         android:id="@+id/luckyNumberFragment"
@@ -27,4 +30,9 @@
         android:name="com.example.random.YesOrNoFragment"
         android:label="fragment_yes_or_no"
         tools:layout="@layout/fragment_yes_or_no" />
+    <fragment
+        android:id="@+id/RPSFragment"
+        android:name="com.example.random.RPSFragment"
+        android:label="fragment_r_p_s"
+        tools:layout="@layout/fragment_r_p_s" />
 </navigation>

@@ -59,7 +59,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
 
                 }
                 4 -> {
-
+                    navigateToNewScreen(R.id.action_homeFragment_to_RPSFragment)
                 }
                 5 -> {
 

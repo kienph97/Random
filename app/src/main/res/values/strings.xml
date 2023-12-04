@@ -18,4 +18,5 @@
     <string name="result_label">Result</string>
     <string name="yes_label">Yes</string>
     <string name="no_label">No</string>
+    <string name="run_label">Run</string>
 </resources>

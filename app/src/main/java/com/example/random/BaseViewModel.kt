@@ -7,6 +7,7 @@ import java.util.Random
 
 open class BaseViewModel: ViewModel() {
     private var yesOrNoLiveData = MutableLiveData<String>()
+    private var rpsLiveData = MutableLiveData<Int>()
     fun getRandomNumber(start: Int, end: Int): Int {
         val random = Random()
         return random.nextInt(end - start + 1) + start
@@ -24,5 +25,10 @@ open class BaseViewModel: ViewModel() {
 
     }
 
+    fun getRandomRPS() {
+        rpsLiveData.value = getRandomNumber(0, 2)
+    }
     fun getYesOrNoLiveData() = yesOrNoLiveData
+
+    fun getRPSLiveData() = rpsLiveData
 }
