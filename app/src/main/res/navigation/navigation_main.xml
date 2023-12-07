@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeFragment_to_RPSFragment"
             app:destination="@id/RPSFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_randomColorFragment"
+            app:destination="@id/randomColorFragment" />
     </fragment>
     <fragment
         android:id="@+id/luckyNumberFragment"
@@ -35,4 +38,9 @@
         android:name="com.example.random.RPSFragment"
         android:label="fragment_r_p_s"
         tools:layout="@layout/fragment_r_p_s" />
+    <fragment
+        android:id="@+id/randomColorFragment"
+        android:name="com.example.random.RandomColorFragment"
+        android:label="fragment_random_color"
+        tools:layout="@layout/fragment_random_color" />
 </navigation>
