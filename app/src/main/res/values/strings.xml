@@ -19,4 +19,5 @@
     <string name="yes_label">Yes</string>
     <string name="no_label">No</string>
     <string name="run_label">Run</string>
+    <string name="flip_it_label">Flip it</string>
 </resources>

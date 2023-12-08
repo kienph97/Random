@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_randomColorFragment"
             app:destination="@id/randomColorFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_randomCoinFragment"
+            app:destination="@id/randomCoinFragment" />
     </fragment>
     <fragment
         android:id="@+id/luckyNumberFragment"
@@ -43,4 +46,9 @@
         android:name="com.example.random.RandomColorFragment"
         android:label="fragment_random_color"
         tools:layout="@layout/fragment_random_color" />
+    <fragment
+        android:id="@+id/randomCoinFragment"
+        android:name="com.example.random.RandomCoinFragment"
+        android:label="fragment_random_coin"
+        tools:layout="@layout/fragment_random_coin" />
 </navigation>

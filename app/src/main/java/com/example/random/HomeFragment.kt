@@ -62,7 +62,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
                     navigateToNewScreen(R.id.action_homeFragment_to_RPSFragment)
                 }
                 5 -> {
-
+                    navigateToNewScreen(R.id.action_homeFragment_to_randomCoinFragment)
                 }
                 6 -> {
                     navigateToNewScreen(R.id.action_homeFragment_to_randomColorFragment)
