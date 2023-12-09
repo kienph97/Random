@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_homeFragment_to_randomCoinFragment"
             app:destination="@id/randomCoinFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_chooseListFragment"
+            app:destination="@id/chooseListFragment" />
     </fragment>
     <fragment
         android:id="@+id/luckyNumberFragment"
@@ -51,4 +54,9 @@
         android:name="com.example.random.RandomCoinFragment"
         android:label="fragment_random_coin"
         tools:layout="@layout/fragment_random_coin" />
+    <fragment
+        android:id="@+id/chooseListFragment"
+        android:name="com.example.random.ChooseListFragment"
+        android:label="fragment_choose_list"
+        tools:layout="@layout/fragment_choose_list" />
 </navigation>

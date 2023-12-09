@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ChooseListFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAddItem"
+        android:layout_margin="@dimen/dp10"
+        android:padding="@dimen/dp10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:drawableLeft="@drawable/ic_add_item"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:background="@drawable/shape_bg_add_item"
+        android:drawablePadding="@dimen/dp10"
+        android:text="@string/add_item_label" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvItem"
+        android:paddingHorizontal="@dimen/dp10"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddItem"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvSelect"
+        android:layout_marginBottom="@dimen/dp40"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/sp23"
+        android:textStyle="bold"
+        android:alpha="0.5"
+        android:enabled="false"
+        android:gravity="center"
+        android:layout_marginHorizontal="@dimen/dp10"
+        android:textColor="@color/white"
+        android:paddingVertical="@dimen/dp10"
+        android:background="@drawable/bg_button_go"
+        android:text="@string/select_item_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

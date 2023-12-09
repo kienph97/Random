@@ -56,7 +56,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
                     navigateToNewScreen(R.id.action_homeFragment_to_yesOrNoFragment)
                 }
                 3 -> {
-
+                    navigateToNewScreen(R.id.action_homeFragment_to_chooseListFragment)
                 }
                 4 -> {
                     navigateToNewScreen(R.id.action_homeFragment_to_RPSFragment)

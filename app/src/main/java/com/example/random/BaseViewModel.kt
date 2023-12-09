@@ -10,9 +10,14 @@ open class BaseViewModel: ViewModel() {
     private var rpsLiveData = MutableLiveData<Int>()
     private var colorLiveData = MutableLiveData<Int>()
     private var coinLiveData = MutableLiveData<Int>()
+    private var chooseItemLiveData = MutableLiveData<Int>()
     fun getRandomNumber(start: Int, end: Int): Int {
         val random = Random()
         return random.nextInt(end - start + 1) + start
+    }
+
+    fun getRandomItem(start: Int, end: Int) {
+        chooseItemLiveData.value = getRandomNumber(start, end)
     }
 
     fun getRandomCoin() {
@@ -47,4 +52,6 @@ open class BaseViewModel: ViewModel() {
     fun getColorLiveData() = colorLiveData
 
     fun getCoinLiveData() = coinLiveData
+
+    fun getChooseItemLiveData() = chooseItemLiveData
 }

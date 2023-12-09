@@ -20,4 +20,8 @@
     <string name="no_label">No</string>
     <string name="run_label">Run</string>
     <string name="flip_it_label">Flip it</string>
+    <string name="add_item_label">Add Item</string>
+    <string name="select_item_label">Select Item</string>
+    <string name="input_item_label">Input Item</string>
+    <string name="item_select_label">Item Select: </string>
 </resources>
