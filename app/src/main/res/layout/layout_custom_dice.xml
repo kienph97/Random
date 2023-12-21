@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imvFirst"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_dice_one"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@id/imvSecond"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imvSecond"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_dice_one"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imvFirst"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imvThird"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_dice_one"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imvFirst" />
+
+    <ImageView
+        android:id="@+id/imvForth"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_dice_one"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/imvThird"
+        app:layout_constraintTop_toBottomOf="@+id/imvSecond" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

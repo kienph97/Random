@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_homeFragment_to_chooseListFragment"
             app:destination="@id/chooseListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_randomDiceFragment"
+            app:destination="@id/randomDiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/luckyNumberFragment"
@@ -59,4 +62,8 @@
         android:name="com.example.random.ChooseListFragment"
         android:label="fragment_choose_list"
         tools:layout="@layout/fragment_choose_list" />
+    <fragment
+        android:id="@+id/randomDiceFragment"
+        android:name="com.example.random.RandomDiceFragment"
+        android:label="RandomDiceFragment" />
 </navigation>

@@ -11,6 +11,7 @@ open class BaseViewModel: ViewModel() {
     private var colorLiveData = MutableLiveData<Int>()
     private var coinLiveData = MutableLiveData<Int>()
     private var chooseItemLiveData = MutableLiveData<Int>()
+    private var diceRandomLiveData = MutableLiveData<ArrayList<Int>>()
     fun getRandomNumber(start: Int, end: Int): Int {
         val random = Random()
         return random.nextInt(end - start + 1) + start
@@ -45,6 +46,14 @@ open class BaseViewModel: ViewModel() {
     fun getRandomRPS() {
         rpsLiveData.value = getRandomNumber(0, 2)
     }
+
+    fun getRandomDice(number: Int) {
+        val list = ArrayList<Int>();
+        for (i in 0 until number) {
+            list.add(getRandomNumber(1,6))
+        }
+        diceRandomLiveData.value = list
+    }
     fun getYesOrNoLiveData() = yesOrNoLiveData
 
     fun getRPSLiveData() = rpsLiveData
@@ -54,4 +63,6 @@ open class BaseViewModel: ViewModel() {
     fun getCoinLiveData() = coinLiveData
 
     fun getChooseItemLiveData() = chooseItemLiveData
+
+    fun getDiceRandomLiveData() = diceRandomLiveData
 }

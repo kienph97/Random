@@ -68,7 +68,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
                     navigateToNewScreen(R.id.action_homeFragment_to_randomColorFragment)
                 }
                 7 -> {
-
+                    navigateToNewScreen(R.id.action_homeFragment_to_randomDiceFragment)
                 }
             }
         }

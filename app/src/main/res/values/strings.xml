@@ -24,4 +24,7 @@
     <string name="select_item_label">Select Item</string>
     <string name="input_item_label">Input Item</string>
     <string name="item_select_label">Item Select: </string>
+    <string name="input_number_dice_label">Input number dice</string>
+    <string name="please_input_number_dice">Please input number dice</string>
+    <string name="maximum_fore_dice">Maximum 4 dice</string>
 </resources>
