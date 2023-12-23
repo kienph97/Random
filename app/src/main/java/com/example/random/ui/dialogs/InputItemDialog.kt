@@ -1,4 +1,4 @@
-package com.example.random
+package com.example.random.ui.dialogs
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
+import com.example.random.R
 import com.example.random.databinding.DialogInputItemFragmentBinding
 
 class InputItemDialog(val name: String? = null, val callback: (String) -> Unit): DialogFragment(), View.OnClickListener {

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".RPSFragment">
+    tools:context=".ui.fragment.RPSFragment">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/llResult"
         android:gravity="center"

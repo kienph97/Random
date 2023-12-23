@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".ui.fragment.HomeFragment">
     <LinearLayout
         android:id="@+id/llTop"
         android:background="@drawable/shape_bg_top_home"
@@ -123,7 +123,6 @@
         android:id="@+id/viewHide"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:background="@color/color80000000"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/llNavigationDrawer"

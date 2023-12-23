@@ -1,8 +1,8 @@
-package com.example.random
+package com.example.random.entities
 
 
 import android.content.Context
-import androidx.core.content.ContextCompat
+import com.example.random.R
 
 data class HomeModel(
     override val id: Int = 1,

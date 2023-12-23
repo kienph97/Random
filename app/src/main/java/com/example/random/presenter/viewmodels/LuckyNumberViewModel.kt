@@ -1,6 +1,7 @@
-package com.example.random
+package com.example.random.presenter.viewmodels
 
 import androidx.lifecycle.MutableLiveData
+import com.example.random.presenter.viewmodels.BaseViewModel
 
 class LuckyNumberViewModel: BaseViewModel() {
     private var luckyNumberLiveData = MutableLiveData<Int>()

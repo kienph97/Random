@@ -1,4 +1,4 @@
-package com.example.random
+package com.example.random.ui.customviews
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.view.isVisible
+import com.example.random.R
 import com.example.random.databinding.LayoutCustomDiceBinding
 
 class CustomDice @JvmOverloads constructor(

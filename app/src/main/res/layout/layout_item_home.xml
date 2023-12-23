@@ -27,16 +27,17 @@
 
     <TextView
         android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp20"
-        android:textSize="@dimen/sp18"
+        android:fontFamily="@font/finger_paint"
         android:textColor="@color/black"
+        android:textSize="@dimen/sp18"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/llImage"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tool:text="@string/lucky_number_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        tool:text="@string/lucky_number_label" />
 
 
 

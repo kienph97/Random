@@ -1,12 +1,15 @@
-package com.example.random
+package com.example.random.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.random.ui.dialogs.InputItemDialog
+import com.example.random.R
+import com.example.random.presenter.adapters.SelectItemAdapter
 import com.example.random.databinding.FragmentChooseListBinding
+import com.example.random.presenter.viewmodels.BaseViewModel
 
 class ChooseListFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentChooseListBinding? = null

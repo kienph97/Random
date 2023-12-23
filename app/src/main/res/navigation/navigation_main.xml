@@ -7,63 +7,70 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.random.HomeFragment"
+        android:name="com.example.random.ui.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_luckyNumberFragment"
-            app:destination="@id/luckyNumberFragment" />
+            app:destination="@id/luckyNumberFragment"
+            app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_homeFragment_to_yesOrNoFragment"
-            app:destination="@id/yesOrNoFragment" />
+            app:destination="@id/yesOrNoFragment"
+            app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_homeFragment_to_RPSFragment"
-            app:destination="@id/RPSFragment" />
+            app:destination="@id/RPSFragment"
+            app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_homeFragment_to_randomColorFragment"
-            app:destination="@id/randomColorFragment" />
+            app:destination="@id/randomColorFragment"
+            app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_homeFragment_to_randomCoinFragment"
-            app:destination="@id/randomCoinFragment" />
+            app:destination="@id/randomCoinFragment"
+            app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_homeFragment_to_chooseListFragment"
-            app:destination="@id/chooseListFragment" />
+            app:destination="@id/chooseListFragment"
+            app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_homeFragment_to_randomDiceFragment"
-            app:destination="@id/randomDiceFragment" />
+            app:destination="@id/randomDiceFragment"
+            app:enterAnim="@anim/from_right" />
     </fragment>
     <fragment
         android:id="@+id/luckyNumberFragment"
-        android:name="com.example.random.LuckyNumberFragment"
+        android:name="com.example.random.ui.fragment.LuckyNumberFragment"
         android:label="fragment_lucky_number"
         tools:layout="@layout/fragment_lucky_number" />
     <fragment
         android:id="@+id/yesOrNoFragment"
-        android:name="com.example.random.YesOrNoFragment"
+        android:name="com.example.random.ui.fragment.YesOrNoFragment"
         android:label="fragment_yes_or_no"
         tools:layout="@layout/fragment_yes_or_no" />
     <fragment
         android:id="@+id/RPSFragment"
-        android:name="com.example.random.RPSFragment"
+        android:name="com.example.random.ui.fragment.RPSFragment"
         android:label="fragment_r_p_s"
         tools:layout="@layout/fragment_r_p_s" />
     <fragment
         android:id="@+id/randomColorFragment"
-        android:name="com.example.random.RandomColorFragment"
+        android:name="com.example.random.ui.fragment.RandomColorFragment"
         android:label="fragment_random_color"
         tools:layout="@layout/fragment_random_color" />
     <fragment
         android:id="@+id/randomCoinFragment"
-        android:name="com.example.random.RandomCoinFragment"
+        android:name="com.example.random.ui.fragment.RandomCoinFragment"
         android:label="fragment_random_coin"
         tools:layout="@layout/fragment_random_coin" />
     <fragment
         android:id="@+id/chooseListFragment"
-        android:name="com.example.random.ChooseListFragment"
+        android:name="com.example.random.ui.fragment.ChooseListFragment"
         android:label="fragment_choose_list"
         tools:layout="@layout/fragment_choose_list" />
     <fragment
         android:id="@+id/randomDiceFragment"
-        android:name="com.example.random.RandomDiceFragment"
+        android:name="com.example.random.ui.fragment.RandomDiceFragment"
         android:label="RandomDiceFragment" />
 </navigation>

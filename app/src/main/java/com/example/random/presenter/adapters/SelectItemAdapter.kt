@@ -1,10 +1,9 @@
-package com.example.random
+package com.example.random.presenter.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.random.databinding.LayoutItemSelectBinding
-import javax.sql.StatementEvent
 
 class SelectItemAdapter: RecyclerView.Adapter<SelectItemAdapter.SelectViewHolder>() {
     private var mList = arrayListOf<String>()
@@ -21,12 +20,12 @@ class SelectItemAdapter: RecyclerView.Adapter<SelectItemAdapter.SelectViewHolder
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): SelectItemAdapter.SelectViewHolder {
+    ): SelectViewHolder {
         val v = LayoutItemSelectBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SelectViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: SelectItemAdapter.SelectViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SelectViewHolder, position: Int) {
         mList.getOrNull(position)?.let { holder.bindData(it) }
     }
 

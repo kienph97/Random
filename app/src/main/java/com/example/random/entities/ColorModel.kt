@@ -1,6 +1,7 @@
-package com.example.random
+package com.example.random.entities
 
 import android.content.Context
+import com.example.random.R
 
 data class ColorModel(
     val color: Int? = null

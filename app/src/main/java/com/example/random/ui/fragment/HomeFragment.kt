@@ -1,17 +1,19 @@
-package com.example.random
+package com.example.random.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.transition.ChangeBounds
+import android.transition.Slide
+import android.transition.TransitionManager
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.random.R
 import com.example.random.databinding.FragmentHomeBinding
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.example.random.entities.HomeModel
+import com.example.random.presenter.adapters.HomeAdapter
 
 class HomeFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentHomeBinding? = null
@@ -78,7 +80,11 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
         when(view?.id) {
             R.id.imvMenu -> {
                 mBinding?.apply {
-                    llNavigationDrawer.isVisible = true
+                    val transition = Slide()
+                    transition.duration = 300
+                    transition.slideEdge = Gravity.LEFT
+                    TransitionManager.beginDelayedTransition(llNavigationDrawer, transition)
+                    llNavigationDrawer.visibility = View.VISIBLE
                     viewHide.isVisible = true
                 }
             }

@@ -1,8 +1,10 @@
-package com.example.random
+package com.example.random.presenter.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.random.entities.ColorModel
+import com.example.random.R
 import java.util.Random
 
 open class BaseViewModel: ViewModel() {

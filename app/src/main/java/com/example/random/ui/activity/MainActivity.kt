@@ -1,4 +1,4 @@
-package com.example.random
+package com.example.random.ui.activity
 
 import android.content.ComponentName
 import android.content.Context

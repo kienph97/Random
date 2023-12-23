@@ -1,4 +1,4 @@
-package com.example.random
+package com.example.random.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.delay
 
 open class BaseFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +30,7 @@ open class BaseFragment: Fragment() {
     }
 
     fun navigateToNewScreen(id: Int) {
+        Thread.sleep(200)
         findNavController().navigate(id)
     }
 }

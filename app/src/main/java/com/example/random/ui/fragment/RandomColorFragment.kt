@@ -1,11 +1,12 @@
-package com.example.random
+package com.example.random.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.random.R
 import com.example.random.databinding.FragmentRandomColorBinding
+import com.example.random.presenter.viewmodels.BaseViewModel
 
 class RandomColorFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentRandomColorBinding? = null
