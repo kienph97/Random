@@ -33,6 +33,7 @@
         android:textSize="@dimen/sp23"
         android:textStyle="bold"
         android:gravity="center"
+        android:fontFamily="@font/finger_paint"
         android:layout_marginHorizontal="@dimen/dp10"
         android:textColor="@color/white"
         android:paddingVertical="@dimen/dp10"

@@ -34,6 +34,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:textSize="@dimen/sp23"
         android:textStyle="bold"
+        android:fontFamily="@font/finger_paint"
         android:alpha="0.5"
         android:enabled="false"
         android:gravity="center"

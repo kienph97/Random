@@ -35,10 +35,10 @@ class RPSFragment : BaseFragment(), View.OnClickListener {
         mViewModel?.getRPSLiveData()?.observe(viewLifecycleOwner) {
             mBinding?.imvResult?.setImageResource(
                 when (it) {
-                    0 -> R.drawable.ic_fist
+                    0 -> R.drawable.ic_bua
                     1 -> R.drawable.ic_leaf
                     else -> {
-                        R.drawable.ic_scissor
+                        R.drawable.ic_keo
                     }
                 }
             )
