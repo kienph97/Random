@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import com.example.random.R
 import com.example.random.databinding.FragmentYesOrNoBinding
 import com.example.random.presenter.viewmodels.BaseViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class YesOrNoFragment : BaseFragment(), View.OnClickListener {
     private lateinit var mBinding: FragmentYesOrNoBinding
@@ -33,7 +37,18 @@ class YesOrNoFragment : BaseFragment(), View.OnClickListener {
 
     private fun initObserver() {
         mBaseViewModel?.getYesOrNoLiveData()?.observe(viewLifecycleOwner) {
-            mBinding.tvResult.text = it
+            CoroutineScope(Dispatchers.Main).launch {
+                var job = launch {
+                    for (i in 0 until 7) {
+                        delay(100L)
+                        mBinding.tvResult.text = "Yes"
+                        delay(100L)
+                        mBinding.tvResult.text = "No"
+                    }
+                }
+                job.join()
+                mBinding.tvResult.text = it
+            }
         }
     }
 

@@ -9,6 +9,11 @@ import androidx.core.view.isVisible
 import com.example.random.presenter.viewmodels.LuckyNumberViewModel
 import com.example.random.R
 import com.example.random.databinding.FragmentLuckyNumberBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass.
@@ -18,6 +23,8 @@ import com.example.random.databinding.FragmentLuckyNumberBinding
 class LuckyNumberFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentLuckyNumberBinding? = null
     private var mLuckyNumberViewModel: LuckyNumberViewModel? = null
+    private var start = ""
+    private var end = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,8 +53,8 @@ class LuckyNumberFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun handleFindNumber() {
-        val start = mBinding?.edtStart?.text.toString().replace(" ", "")
-        val end = mBinding?.edtEnd?.text.toString().replace(" ", "")
+        start = mBinding?.edtStart?.text.toString().replace(" ", "")
+        end = mBinding?.edtEnd?.text.toString().replace(" ", "")
         if (start.isNotEmpty() && end.isNotEmpty() && start.toInt() < end.toInt()) {
             mLuckyNumberViewModel?.getLuckyNumber(start.toInt(), end.toInt())
         } else {
@@ -62,9 +69,34 @@ class LuckyNumberFragment : BaseFragment(), View.OnClickListener {
         mLuckyNumberViewModel?.getLuckyNumberLiveData()?.observe(viewLifecycleOwner) {
             mBinding?.apply {
                 tvResult.isVisible = true
-                tvResult.text = it.toString()
                 tvError.isVisible = false
+                CoroutineScope(Dispatchers.Main).launch {
+                    var job = launch {
+                        if (end.toInt() - start.toInt() < 10) {
+                            for (i in start.toInt() until end.toInt()) {
+                                delay(100L)
+                                tvResult.text = i.toString()
+                            }
+                        } else if (end.toInt() - start.toInt() < 100) {
+                            for (i in start.toInt() until end.toInt()) {
+                                delay(1L)
+                                tvResult.text = i.toString()
+                            }
+                        } else {
+                            for (i in start.toInt() until start.toInt()+100) {
+                                delay(1L)
+                                tvResult.text = i.toString()
+                            }
+                        }
+
+                    }
+                    job.join()
+                    tvResult.text = it.toString()
+                }
+
+
             }
+
         }
     }
 

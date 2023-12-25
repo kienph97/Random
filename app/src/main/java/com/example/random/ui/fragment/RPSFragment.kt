@@ -8,6 +8,10 @@ import androidx.lifecycle.observe
 import com.example.random.R
 import com.example.random.databinding.FragmentRPSBinding
 import com.example.random.presenter.viewmodels.BaseViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class RPSFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentRPSBinding? = null
@@ -33,15 +37,33 @@ class RPSFragment : BaseFragment(), View.OnClickListener {
 
     private fun initObserver() {
         mViewModel?.getRPSLiveData()?.observe(viewLifecycleOwner) {
-            mBinding?.imvResult?.setImageResource(
-                when (it) {
-                    0 -> R.drawable.ic_bua
-                    1 -> R.drawable.ic_leaf
-                    else -> {
-                        R.drawable.ic_keo
+            CoroutineScope(Dispatchers.Main).launch {
+                var job = launch {
+                    for (i in 0 until 6) {
+                        delay(100L)
+
+                        mBinding?.imvResult?.setImageResource(
+                            when (i % 3) {
+                                0 -> R.drawable.ic_bua
+                                1 -> R.drawable.ic_leaf
+                                else -> {
+                                    R.drawable.ic_keo
+                                }
+                            }
+                        )
                     }
                 }
-            )
+                job.join()
+                mBinding?.imvResult?.setImageResource(
+                    when (it) {
+                        0 -> R.drawable.ic_bua
+                        1 -> R.drawable.ic_leaf
+                        else -> {
+                            R.drawable.ic_keo
+                        }
+                    }
+                )
+            }
         }
     }
 

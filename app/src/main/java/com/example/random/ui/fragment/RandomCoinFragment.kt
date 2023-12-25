@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import com.example.random.R
 import com.example.random.databinding.FragmentRandomCoinBinding
 import com.example.random.presenter.viewmodels.BaseViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class RandomCoinFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentRandomCoinBinding? = null
@@ -32,14 +36,31 @@ class RandomCoinFragment : BaseFragment(), View.OnClickListener {
 
     private fun initObserver() {
         mViewModel?.getCoinLiveData()?.observe(viewLifecycleOwner) {
-            when (it) {
-                0 -> {
-                    mBinding?.imvResult?.setImageResource(R.drawable.ic_coin_n)
+            CoroutineScope(Dispatchers.Main).launch {
+                var job  = launch {
+                    for (i in 0 until 7) {
+                        delay(100)
+                        when (i % 2) {
+                            0 -> {
+                                mBinding?.imvResult?.setImageResource(R.drawable.ic_coin_n)
+                            }
+                            1 -> {
+                                mBinding?.imvResult?.setImageResource(R.drawable.ic_coin_s)
+                            }
+                        }
+                    }
                 }
-                1 -> {
-                    mBinding?.imvResult?.setImageResource(R.drawable.ic_coin_s)
+                job.join()
+                when (it) {
+                    0 -> {
+                        mBinding?.imvResult?.setImageResource(R.drawable.ic_coin_n)
+                    }
+                    1 -> {
+                        mBinding?.imvResult?.setImageResource(R.drawable.ic_coin_s)
+                    }
                 }
             }
+
         }
 
     }
