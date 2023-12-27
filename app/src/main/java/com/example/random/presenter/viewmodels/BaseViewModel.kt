@@ -10,7 +10,7 @@ import java.util.Random
 open class BaseViewModel: ViewModel() {
     private var yesOrNoLiveData = MutableLiveData<String>()
     private var rpsLiveData = MutableLiveData<Int>()
-    private var colorLiveData = MutableLiveData<Int>()
+    private var colorLiveData = MutableLiveData<ColorModel>()
     private var coinLiveData = MutableLiveData<Int>()
     private var chooseItemLiveData = MutableLiveData<Int>()
     private var diceRandomLiveData = MutableLiveData<ArrayList<Int>>()
@@ -40,8 +40,8 @@ open class BaseViewModel: ViewModel() {
     }
 
     fun getRandomColor(context: Context) {
-        val index = getRandomNumber(0, 11)
         val list = ColorModel().getListColor(context)
+        val index = getRandomNumber(0, list.size-1)
         colorLiveData.value = list.getOrNull(index)
     }
 

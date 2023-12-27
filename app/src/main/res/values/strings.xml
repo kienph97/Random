@@ -20,11 +20,13 @@
     <string name="no_label">No</string>
     <string name="run_label">Run</string>
     <string name="flip_it_label">Flip it</string>
-    <string name="add_item_label">Add Item</string>
+    <string name="click_to_add_item_label">Click to add item</string>
     <string name="select_item_label">Select Item</string>
     <string name="input_item_label">Input Item</string>
-    <string name="item_select_label">Item Select: </string>
+    <string name="item_selected_label">Item selected: </string>
     <string name="input_number_dice_label">Input number dice</string>
     <string name="please_input_number_dice">Please input number dice</string>
     <string name="maximum_fore_dice">Maximum 4 dice</string>
+    <string name="this_feature_will_be_update_in_next_version">This feature will be updated in next version</string>
+    <string name="code_color">Code color</string>
 </resources>

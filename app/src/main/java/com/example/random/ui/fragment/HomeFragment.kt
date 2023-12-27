@@ -8,6 +8,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.random.R
@@ -36,6 +37,9 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
     private fun initListener() {
         mBinding?.imvMenu?.setOnClickListener(this)
         mBinding?.viewHide?.setOnClickListener(this)
+        mBinding?.feedback?.setOnClickListener(this)
+        mBinding?.rate?.setOnClickListener(this)
+        mBinding?.share?.setOnClickListener(this)
     }
 
     private fun initView() {
@@ -93,6 +97,15 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
                     llNavigationDrawer.isVisible = false
                     viewHide.isVisible = false
                 }
+            }
+            R.id.share -> {
+                Toast.makeText(context, context?.getString(R.string.this_feature_will_be_update_in_next_version), Toast.LENGTH_SHORT).show()
+            }
+            R.id.rate -> {
+                Toast.makeText(context, context?.getString(R.string.this_feature_will_be_update_in_next_version), Toast.LENGTH_SHORT).show()
+            }
+            R.id.feedback -> {
+                Toast.makeText(context, context?.getString(R.string.this_feature_will_be_update_in_next_version), Toast.LENGTH_SHORT).show()
             }
         }
 

@@ -18,7 +18,7 @@
         android:textStyle="bold"
         android:background="@drawable/shape_bg_add_item"
         android:drawablePadding="@dimen/dp10"
-        android:text="@string/add_item_label" />
+        android:text="@string/click_to_add_item_label" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvItem"

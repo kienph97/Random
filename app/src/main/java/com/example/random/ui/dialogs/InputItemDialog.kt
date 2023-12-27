@@ -39,9 +39,10 @@ class InputItemDialog(val name: String? = null, val callback: (String) -> Unit):
     fun initView() {
         mBinding?.apply {
             llButton.isVisible = name.isNullOrEmpty()
-            tvTitle.text = context?.getString(R.string.item_select_label)
+            tvTitle.text = context?.getString(R.string.input_item_label)
             if (!name.isNullOrEmpty()) {
                 edtInput.setText(name, TextView.BufferType.EDITABLE)
+                tvTitle.text = context?.getString(R.string.item_selected_label)
             }
         }
 

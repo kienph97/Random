@@ -80,39 +80,39 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/feedback"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp10"
             android:layout_marginTop="@dimen/dp18"
             android:drawableLeft="@drawable/ic_feedback"
             android:drawablePadding="@dimen/dp8"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:text="@string/feedback_label"
             android:textColor="@color/black"
             android:textSize="@dimen/sp14" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/rate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp10"
             android:layout_marginTop="@dimen/dp18"
             android:drawableLeft="@drawable/ic_rate"
             android:drawablePadding="@dimen/dp8"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:text="@string/rate_label"
             android:textColor="@color/black"
             android:textSize="@dimen/sp14" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/share"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp10"
             android:layout_marginTop="@dimen/dp18"
             android:drawableLeft="@drawable/ic_share"
             android:drawablePadding="@dimen/dp8"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:text="@string/share_label"
             android:textColor="@color/black"
             android:textSize="@dimen/sp14" />

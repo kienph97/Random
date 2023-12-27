@@ -1,5 +1,7 @@
 package com.example.random.ui.fragment
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +34,8 @@ class RandomColorFragment : BaseFragment(), View.OnClickListener {
 
     private fun initObserver() {
         mViewModel?.getColorLiveData()?.observe(viewLifecycleOwner) {
-            mBinding?.llResult?.setBackgroundColor(it)
+            mBinding?.llResult?.background?.setColorFilter(Color.parseColor(it.code), PorterDuff.Mode.SRC_ATOP)
+            mBinding?.tvNameColor?.text = it.code
         }
     }
 
