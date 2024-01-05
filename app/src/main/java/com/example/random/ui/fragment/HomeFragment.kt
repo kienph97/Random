@@ -1,5 +1,7 @@
 package com.example.random.ui.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.transition.ChangeBounds
 import android.transition.Slide
@@ -40,6 +42,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
         mBinding?.feedback?.setOnClickListener(this)
         mBinding?.rate?.setOnClickListener(this)
         mBinding?.share?.setOnClickListener(this)
+        mBinding?.privacyPolicy?.setOnClickListener(this)
     }
 
     private fun initView() {
@@ -107,8 +110,15 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
             R.id.feedback -> {
                 Toast.makeText(context, context?.getString(R.string.this_feature_will_be_update_in_next_version), Toast.LENGTH_SHORT).show()
             }
+            R.id.privacyPolicy -> {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(URL)
+                startActivity(intent)
+            }
         }
 
     }
-
+    companion object {
+        const val URL = "https://www.freeprivacypolicy.com/live/d5983e33-6ac4-407d-b72f-1b017aa4bf17"
+    }
 }

@@ -117,6 +117,19 @@
             android:textColor="@color/black"
             android:textSize="@dimen/sp14" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/privacyPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp18"
+            android:drawableLeft="@drawable/ic_key"
+            android:drawablePadding="@dimen/dp8"
+            android:gravity="center_vertical"
+            android:text="@string/privacy_policy"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp14" />
+
     </LinearLayout>
 
     <View
