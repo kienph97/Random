@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.random.ui.fragment.HomeFragment"
+        android:name="com.kien.random.ui.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -41,36 +41,36 @@
     </fragment>
     <fragment
         android:id="@+id/luckyNumberFragment"
-        android:name="com.example.random.ui.fragment.LuckyNumberFragment"
+        android:name="com.kien.random.ui.fragment.LuckyNumberFragment"
         android:label="fragment_lucky_number"
         tools:layout="@layout/fragment_lucky_number" />
     <fragment
         android:id="@+id/yesOrNoFragment"
-        android:name="com.example.random.ui.fragment.YesOrNoFragment"
+        android:name="com.kien.random.ui.fragment.YesOrNoFragment"
         android:label="fragment_yes_or_no"
         tools:layout="@layout/fragment_yes_or_no" />
     <fragment
         android:id="@+id/RPSFragment"
-        android:name="com.example.random.ui.fragment.RPSFragment"
+        android:name="com.kien.random.ui.fragment.RPSFragment"
         android:label="fragment_r_p_s"
         tools:layout="@layout/fragment_r_p_s" />
     <fragment
         android:id="@+id/randomColorFragment"
-        android:name="com.example.random.ui.fragment.RandomColorFragment"
+        android:name="com.kien.random.ui.fragment.RandomColorFragment"
         android:label="fragment_random_color"
         tools:layout="@layout/fragment_random_color" />
     <fragment
         android:id="@+id/randomCoinFragment"
-        android:name="com.example.random.ui.fragment.RandomCoinFragment"
+        android:name="com.kien.random.ui.fragment.RandomCoinFragment"
         android:label="fragment_random_coin"
         tools:layout="@layout/fragment_random_coin" />
     <fragment
         android:id="@+id/chooseListFragment"
-        android:name="com.example.random.ui.fragment.ChooseListFragment"
+        android:name="com.kien.random.ui.fragment.ChooseListFragment"
         android:label="fragment_choose_list"
         tools:layout="@layout/fragment_choose_list" />
     <fragment
         android:id="@+id/randomDiceFragment"
-        android:name="com.example.random.ui.fragment.RandomDiceFragment"
+        android:name="com.kien.random.ui.fragment.RandomDiceFragment"
         android:label="RandomDiceFragment" />
 </navigation>
