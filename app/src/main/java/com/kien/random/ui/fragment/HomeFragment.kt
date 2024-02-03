@@ -3,19 +3,18 @@ package com.kien.random.ui.fragment
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.transition.ChangeBounds
 import android.transition.Slide
 import android.transition.TransitionManager
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kien.random.BuildConfig
 import com.kien.random.R
 import com.kien.random.databinding.FragmentHomeBinding
-import com.kien.random.entities.HomeModel
 import com.kien.random.presenter.adapters.HomeAdapter
 
 class HomeFragment : BaseFragment(), View.OnClickListener {
@@ -102,13 +101,25 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
                 }
             }
             R.id.share -> {
-                Toast.makeText(context, context?.getString(R.string.this_feature_will_be_update_in_next_version), Toast.LENGTH_SHORT).show()
+                try {
+                    val shareIntent = Intent(Intent.ACTION_SEND)
+                    shareIntent.type = "text/plain"
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name")
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, URL_APP)
+                    startActivity(Intent.createChooser(shareIntent, "choose one"))
+                } catch (e: Exception) {
+                    Log.e("LOG", "$e")
+                }
             }
             R.id.rate -> {
-                Toast.makeText(context, context?.getString(R.string.this_feature_will_be_update_in_next_version), Toast.LENGTH_SHORT).show()
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(URL_APP)
+                startActivity(intent)
             }
             R.id.feedback -> {
-                Toast.makeText(context, context?.getString(R.string.this_feature_will_be_update_in_next_version), Toast.LENGTH_SHORT).show()
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(URL_APP)
+                startActivity(intent)
             }
             R.id.privacyPolicy -> {
                 val intent = Intent(Intent.ACTION_VIEW)
@@ -120,5 +131,6 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
     }
     companion object {
         const val URL = "https://www.freeprivacypolicy.com/live/d5983e33-6ac4-407d-b72f-1b017aa4bf17"
+        const val URL_APP = "https://play.google.com/store/apps/details?id=com.kien.random"
     }
 }
