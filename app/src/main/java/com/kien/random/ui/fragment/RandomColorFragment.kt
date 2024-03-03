@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.kien.random.R
 import com.kien.random.databinding.FragmentRandomColorBinding
+import com.kien.random.entities.ColorModel
 import com.kien.random.presenter.viewmodels.BaseViewModel
 
 class RandomColorFragment : BaseFragment(), View.OnClickListener {
@@ -42,7 +43,8 @@ class RandomColorFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.tvRun -> {
-                context?.let { mViewModel?.getRandomColor(it) }
+                val colorModel = ColorModel()
+                context?.let { mViewModel?.getRandomColor(it, colorModel) }
             }
         }
     }

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kien.random.entities.ColorModel
 import com.kien.random.R
+import com.kien.random.interfaces.ColorModelItf
 import java.util.Random
 
 open class BaseViewModel: ViewModel() {
@@ -39,8 +40,8 @@ open class BaseViewModel: ViewModel() {
 
     }
 
-    fun getRandomColor(context: Context) {
-        val list = com.kien.random.entities.ColorModel().getListColor(context)
+    fun getRandomColor(context: Context, colorModelItf: ColorModelItf) {
+        val list = colorModelItf.getListColor(context)
         val index = getRandomNumber(0, list.size-1)
         colorLiveData.value = list.getOrNull(index)
     }

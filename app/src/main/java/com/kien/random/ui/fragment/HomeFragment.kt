@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kien.random.BuildConfig
 import com.kien.random.R
 import com.kien.random.databinding.FragmentHomeBinding
+import com.kien.random.entities.HomeModel
+import com.kien.random.interfaces.HomeModelItf
 import com.kien.random.presenter.adapters.HomeAdapter
 import com.kien.random.presenter.adapters.HomeAdapter.Companion.GRILL
 import com.kien.random.presenter.adapters.HomeAdapter.Companion.LIST
@@ -38,7 +40,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         initSharedPreferences()
-        initView()
+        initView(HomeModel())
         initListener()
         return mBinding?.root
     }
@@ -46,7 +48,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
     private fun initSharedPreferences() {
         mSharedPreferences = context?.getSharedPreferences(KEY_SHOW, MODE_PRIVATE)
         mEditor = mSharedPreferences?.edit()
-        if (mSharedPreferences?.getString(KEY_SHOW, "").isNullOrEmpty()) {
+        if (mSharedPreferences?.getString(KEY_SHOW, LIST).isNullOrEmpty()) {
             mEditor?.apply {
                 putString(KEY_SHOW, LIST)
                 apply()
@@ -64,37 +66,53 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
         mBinding?.imvShowItem?.setOnClickListener(this)
     }
 
-    private fun initView() {
-        context?.let { com.kien.random.entities.HomeModel().getListItem(it) }?.let { mHomeAdapter.setData(it) }
-        mBinding?.rcvItemHome?.apply {
-            adapter = mHomeAdapter
-            layoutManager = if (mSharedPreferences?.getString(KEY_SHOW, "") == LIST) LinearLayoutManager(
-                context,
-                LinearLayoutManager.VERTICAL,
-                false
-            ) else GridLayoutManager(context, 2)
+    private fun initView(homeModelItf: HomeModelItf) {
+        if (mSharedPreferences?.getString(KEY_SHOW, LIST) == LIST) {
+            mHomeAdapter.setTypeDisplay(LIST)
+            mBinding?.imvShowItem?.setImageResource(R.drawable.ic_grill_item)
+        } else {
+            mBinding?.imvShowItem?.setImageResource(R.drawable.ic_list_item)
+            mHomeAdapter.setTypeDisplay(GRILL)
         }
+        mBinding?.rcvItemHome?.apply {
+            Log.d("kien", "${mSharedPreferences?.getString(KEY_SHOW, LIST)}")
+            layoutManager = if (mSharedPreferences?.getString(KEY_SHOW, LIST) == LIST)
+                LinearLayoutManager(
+                    context,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                ) else GridLayoutManager(context, 2)
+            adapter = mHomeAdapter
+        }
+        Log.d("kienPT", "${mHomeAdapter?.getTypeDisplay()}")
+        context?.let { homeModelItf.getListItem(it) }?.let { mHomeAdapter.setData(it) }
 
         mHomeAdapter.setCallBackClickItem {
-            when(it) {
+            when (it) {
                 1 -> {
                     navigateToNewScreen(R.id.action_homeFragment_to_luckyNumberFragment)
                 }
+
                 2 -> {
                     navigateToNewScreen(R.id.action_homeFragment_to_yesOrNoFragment)
                 }
+
                 3 -> {
                     navigateToNewScreen(R.id.action_homeFragment_to_chooseListFragment)
                 }
+
                 4 -> {
                     navigateToNewScreen(R.id.action_homeFragment_to_RPSFragment)
                 }
+
                 5 -> {
                     navigateToNewScreen(R.id.action_homeFragment_to_randomCoinFragment)
                 }
+
                 6 -> {
                     navigateToNewScreen(R.id.action_homeFragment_to_randomColorFragment)
                 }
+
                 7 -> {
                     navigateToNewScreen(R.id.action_homeFragment_to_randomDiceFragment)
                 }
@@ -103,7 +121,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun onClick(view: View?) {
-        when(view?.id) {
+        when (view?.id) {
             R.id.imvMenu -> {
                 mBinding?.apply {
                     val transition = Slide()
@@ -114,12 +132,14 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
                     viewHide.isVisible = true
                 }
             }
+
             R.id.viewHide -> {
                 mBinding?.apply {
                     llNavigationDrawer.isVisible = false
                     viewHide.isVisible = false
                 }
             }
+
             R.id.share -> {
                 try {
                     val shareIntent = Intent(Intent.ACTION_SEND)
@@ -131,21 +151,25 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
                     Log.e("LOG", "$e")
                 }
             }
+
             R.id.rate -> {
                 val intent = Intent(Intent.ACTION_VIEW)
                 intent.data = Uri.parse(URL_APP)
                 startActivity(intent)
             }
+
             R.id.feedback -> {
                 val intent = Intent(Intent.ACTION_VIEW)
                 intent.data = Uri.parse(URL_APP)
                 startActivity(intent)
             }
+
             R.id.privacyPolicy -> {
                 val intent = Intent(Intent.ACTION_VIEW)
                 intent.data = Uri.parse(URL)
                 startActivity(intent)
             }
+
             R.id.imvShowItem -> {
                 if (mSharedPreferences?.getString(KEY_SHOW, "") == GRILL) {
                     mBinding?.imvShowItem?.setImageResource(R.drawable.ic_grill_item)
@@ -174,13 +198,15 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
                 } else {
                     LinearLayoutManager(context)
                 }
-                context?.let { com.kien.random.entities.HomeModel().getListItem(it) }?.let { mHomeAdapter.setData(it) }
+                context?.let { HomeModel().getListItem(it) }?.let { mHomeAdapter.setData(it) }
             }
         }
 
     }
+
     companion object {
-        const val URL = "https://www.freeprivacypolicy.com/live/d5983e33-6ac4-407d-b72f-1b017aa4bf17"
+        const val URL =
+            "https://www.freeprivacypolicy.com/live/d5983e33-6ac4-407d-b72f-1b017aa4bf17"
         const val URL_APP = "https://play.google.com/store/apps/details?id=com.kien.random"
         const val KEY_SHOW = "KEY_SHOW"
     }
