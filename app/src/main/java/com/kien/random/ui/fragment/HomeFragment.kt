@@ -23,12 +23,19 @@ import com.kien.random.interfaces.HomeModelItf
 import com.kien.random.presenter.adapters.HomeAdapter
 import com.kien.random.presenter.adapters.HomeAdapter.Companion.GRILL
 import com.kien.random.presenter.adapters.HomeAdapter.Companion.LIST
+import com.kien.random.presenter.viewmodels.HomeViewModel
+import com.kien.random.repositorys.HomeRepoImpl
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class HomeFragment : BaseFragment(), View.OnClickListener {
     private var mSharedPreferences: SharedPreferences? = null
     private var mEditor: SharedPreferences.Editor? = null
     private var mBinding: FragmentHomeBinding? = null
-    private val mHomeAdapter by lazy { HomeAdapter() }
+    @Inject lateinit var mHomeAdapter: HomeAdapter
+    @Inject lateinit var mHomeViewModel: HomeViewModel
+    @Inject lateinit var mHomeRepoImpl: HomeRepoImpl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +47,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         initSharedPreferences()
-        initView(HomeModel())
+        initView()
         initListener()
         return mBinding?.root
     }
@@ -66,7 +73,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
         mBinding?.imvShowItem?.setOnClickListener(this)
     }
 
-    private fun initView(homeModelItf: HomeModelItf) {
+    private fun initView() {
         if (mSharedPreferences?.getString(KEY_SHOW, LIST) == LIST) {
             mHomeAdapter.setTypeDisplay(LIST)
             mBinding?.imvShowItem?.setImageResource(R.drawable.ic_grill_item)
@@ -84,8 +91,8 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
                 ) else GridLayoutManager(context, 2)
             adapter = mHomeAdapter
         }
-        Log.d("kienPT", "${mHomeAdapter?.getTypeDisplay()}")
-        context?.let { homeModelItf.getListItem(it) }?.let { mHomeAdapter.setData(it) }
+        Log.d("kienPT", "${mHomeAdapter.getTypeDisplay()}")
+        context?.let { mHomeViewModel.getListItem(it, mHomeRepoImpl) }?.let { mHomeAdapter.setData(it) }
 
         mHomeAdapter.setCallBackClickItem {
             when (it) {
@@ -198,7 +205,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener {
                 } else {
                     LinearLayoutManager(context)
                 }
-                context?.let { HomeModel().getListItem(it) }?.let { mHomeAdapter.setData(it) }
+                context?.let { mHomeViewModel.getListItem(it, HomeRepoImpl()) }?.let { mHomeAdapter.setData(it) }
             }
         }
 

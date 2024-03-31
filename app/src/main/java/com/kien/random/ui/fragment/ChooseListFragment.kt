@@ -10,12 +10,15 @@ import com.kien.random.R
 import com.kien.random.presenter.adapters.SelectItemAdapter
 import com.kien.random.databinding.FragmentChooseListBinding
 import com.kien.random.presenter.viewmodels.BaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ChooseListFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentChooseListBinding? = null
-    private var mAdapter: SelectItemAdapter? = null
+    @Inject lateinit var mAdapter: SelectItemAdapter
     private val mListItem = arrayListOf<String>()
-    private var mViewModel = BaseViewModel()
+    @Inject lateinit var mViewModel : BaseViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = FragmentChooseListBinding.inflate(layoutInflater)
@@ -34,7 +37,6 @@ class ChooseListFragment : BaseFragment(), View.OnClickListener {
     private fun initView() {
         mBinding?.rcvItem?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        mAdapter = SelectItemAdapter()
         mBinding?.rcvItem?.adapter = mAdapter
     }
 
@@ -47,7 +49,7 @@ class ChooseListFragment : BaseFragment(), View.OnClickListener {
 
     private fun initObserver() {
         mViewModel.getChooseItemLiveData().observe(viewLifecycleOwner) {
-            val dialog = InputItemDialog.newInstance(mListItem.getOrNull(it)) {
+            val dialog = InputItemDialog.newInstance(mListItem.getOrNull(it)){
 
             }
             dialog.show(parentFragmentManager, "Tag")
@@ -59,8 +61,8 @@ class ChooseListFragment : BaseFragment(), View.OnClickListener {
             R.id.tvAddItem -> {
                 val dialog = InputItemDialog.newInstance {
                     mListItem.add(it)
-                    mAdapter?.setList(mListItem)
-                    mAdapter?.notifyItemInserted(mListItem.size - 1)
+                    mAdapter.setList(mListItem)
+                    mAdapter.notifyItemInserted(mListItem.size - 1)
                     mBinding?.tvSelect?.apply {
                         isEnabled = true
                         alpha = 1F

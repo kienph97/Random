@@ -7,18 +7,21 @@ import android.view.ViewGroup
 import com.kien.random.R
 import com.kien.random.databinding.FragmentRandomCoinBinding
 import com.kien.random.presenter.viewmodels.BaseViewModel
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class RandomCoinFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentRandomCoinBinding? = null
-    private var mViewModel: BaseViewModel? = null
+    @Inject lateinit var mViewModel: BaseViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = FragmentRandomCoinBinding.inflate(layoutInflater)
-        mViewModel = BaseViewModel()
     }
 
     override fun onCreateView(
@@ -35,7 +38,7 @@ class RandomCoinFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun initObserver() {
-        mViewModel?.getCoinLiveData()?.observe(viewLifecycleOwner) {
+        mViewModel.getCoinLiveData().observe(viewLifecycleOwner) {
             CoroutineScope(Dispatchers.Main).launch {
                 var job  = launch {
                     for (i in 0 until 7) {
@@ -68,7 +71,7 @@ class RandomCoinFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.tvRun -> {
-                mViewModel?.getRandomCoin()
+                mViewModel.getRandomCoin()
             }
 
         }

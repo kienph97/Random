@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kien.random.databinding.LayoutItemSelectBinding
+import javax.inject.Inject
 
-class SelectItemAdapter: RecyclerView.Adapter<SelectItemAdapter.SelectViewHolder>() {
+class SelectItemAdapter @Inject constructor(): RecyclerView.Adapter<SelectItemAdapter.SelectViewHolder>() {
     private var mList = arrayListOf<String>()
 
     fun setList(list: ArrayList<String>) {

@@ -10,10 +10,13 @@ import com.kien.random.R
 import com.kien.random.databinding.FragmentRandomColorBinding
 import com.kien.random.entities.ColorModel
 import com.kien.random.presenter.viewmodels.BaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class RandomColorFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentRandomColorBinding? = null
-    private var mViewModel: BaseViewModel? = null
+    @Inject lateinit var mViewModel: BaseViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = FragmentRandomColorBinding.inflate(layoutInflater)
@@ -23,7 +26,6 @@ class RandomColorFragment : BaseFragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mViewModel = BaseViewModel()
         initListener()
         initObserver()
         return mBinding?.root
@@ -34,7 +36,7 @@ class RandomColorFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun initObserver() {
-        mViewModel?.getColorLiveData()?.observe(viewLifecycleOwner) {
+        mViewModel.getColorLiveData().observe(viewLifecycleOwner) {
             mBinding?.llResult?.background?.setColorFilter(Color.parseColor(it.code), PorterDuff.Mode.SRC_ATOP)
             mBinding?.tvNameColor?.text = it.code
         }
@@ -44,7 +46,7 @@ class RandomColorFragment : BaseFragment(), View.OnClickListener {
         when (view?.id) {
             R.id.tvRun -> {
                 val colorModel = ColorModel()
-                context?.let { mViewModel?.getRandomColor(it, colorModel) }
+                context?.let { mViewModel.getRandomColor(it, colorModel) }
             }
         }
     }

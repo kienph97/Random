@@ -9,20 +9,23 @@ import androidx.core.view.isVisible
 import com.kien.random.presenter.viewmodels.LuckyNumberViewModel
 import com.kien.random.R
 import com.kien.random.databinding.FragmentLuckyNumberBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
  * Use the [LuckyNumberFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class LuckyNumberFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentLuckyNumberBinding? = null
-    private var mLuckyNumberViewModel: LuckyNumberViewModel? = null
+    @Inject lateinit var mLuckyNumberViewModel: LuckyNumberViewModel
     private var start = ""
     private var end = ""
 
@@ -35,7 +38,6 @@ class LuckyNumberFragment : BaseFragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mLuckyNumberViewModel = LuckyNumberViewModel()
         initListener()
         initObserver()
         return mBinding?.root
@@ -56,7 +58,7 @@ class LuckyNumberFragment : BaseFragment(), View.OnClickListener {
         start = mBinding?.edtStart?.text.toString().replace(" ", "")
         end = mBinding?.edtEnd?.text.toString().replace(" ", "")
         if (start.isNotEmpty() && end.isNotEmpty() && start.toInt() < end.toInt()) {
-            mLuckyNumberViewModel?.getLuckyNumber(start.toInt(), end.toInt())
+            mLuckyNumberViewModel.getLuckyNumber(start.toInt(), end.toInt())
         } else {
             mBinding?.apply {
                 tvResult.isVisible = false
@@ -66,7 +68,7 @@ class LuckyNumberFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun initObserver() {
-        mLuckyNumberViewModel?.getLuckyNumberLiveData()?.observe(viewLifecycleOwner) {
+        mLuckyNumberViewModel.getLuckyNumberLiveData().observe(viewLifecycleOwner) {
             mBinding?.apply {
                 tvResult.isVisible = true
                 tvError.isVisible = false

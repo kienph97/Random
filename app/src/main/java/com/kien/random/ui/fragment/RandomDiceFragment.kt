@@ -8,10 +8,13 @@ import androidx.core.view.isVisible
 import com.kien.random.R
 import com.kien.random.databinding.FragmentRandomDiceBinding
 import com.kien.random.presenter.viewmodels.BaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class RandomDiceFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentRandomDiceBinding? = null
-    private var mViewModel: BaseViewModel? = null
+    @Inject lateinit var mViewModel: BaseViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = FragmentRandomDiceBinding.inflate(layoutInflater)
@@ -21,14 +24,13 @@ class RandomDiceFragment : BaseFragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mViewModel = BaseViewModel()
         initListener()
         initObserver()
         return mBinding?.root
     }
 
     private fun initObserver() {
-        mViewModel?.getDiceRandomLiveData()?.observe(viewLifecycleOwner) {
+        mViewModel.getDiceRandomLiveData().observe(viewLifecycleOwner) {
             mBinding?.imvResult?.drawDice(it)
         }
     }
@@ -57,7 +59,7 @@ class RandomDiceFragment : BaseFragment(), View.OnClickListener {
                 } else {
                     mBinding?.tvError?.isVisible = false
                     mBinding?.imvResult?.isVisible = true
-                    mViewModel?.getRandomDice(number)
+                    mViewModel.getRandomDice(number)
                 }
             }
         }

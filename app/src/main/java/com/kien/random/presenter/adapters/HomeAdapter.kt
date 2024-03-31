@@ -6,13 +6,14 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.kien.random.databinding.LayoutItemHomeBinding
 import com.kien.random.entities.HomeModel
+import javax.inject.Inject
 
-class HomeAdapter: RecyclerView.Adapter<com.kien.random.presenter.adapters.HomeAdapter.HomeViewHolder>() {
-    private var mListData = arrayListOf<com.kien.random.entities.HomeModel>()
+class HomeAdapter @Inject constructor(): RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+    private var mListData = arrayListOf<HomeModel>()
     private var mTypeDisplay = LIST
     var mCallBackClickItem: ((Int) -> Unit)? = null
 
-    fun setData(list: ArrayList<com.kien.random.entities.HomeModel>) {
+    fun setData(list: ArrayList<HomeModel>) {
         mListData.clear()
         mListData.addAll(list)
         notifyDataSetChanged()
@@ -29,7 +30,7 @@ class HomeAdapter: RecyclerView.Adapter<com.kien.random.presenter.adapters.HomeA
     }
 
     inner class HomeViewHolder(private val itemHomeBinding: LayoutItemHomeBinding): RecyclerView.ViewHolder(itemHomeBinding.root) {
-        fun bindData(item: com.kien.random.entities.HomeModel) {
+        fun bindData(item: HomeModel) {
             when (mTypeDisplay) {
                 GRILL -> {
                     itemHomeBinding.apply {

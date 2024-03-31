@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import com.kien.random.R
 import com.kien.random.databinding.FragmentYesOrNoBinding
 import com.kien.random.presenter.viewmodels.BaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class YesOrNoFragment : BaseFragment(), View.OnClickListener {
     private lateinit var mBinding: FragmentYesOrNoBinding
-    private var mBaseViewModel: BaseViewModel? = null
+    @Inject lateinit var mBaseViewModel: BaseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +28,6 @@ class YesOrNoFragment : BaseFragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         mBinding = FragmentYesOrNoBinding.inflate(layoutInflater)
-        mBaseViewModel = BaseViewModel()
         initListener()
         initObserver()
         return mBinding.root
@@ -36,7 +38,7 @@ class YesOrNoFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun initObserver() {
-        mBaseViewModel?.getYesOrNoLiveData()?.observe(viewLifecycleOwner) {
+        mBaseViewModel.getYesOrNoLiveData().observe(viewLifecycleOwner) {
             CoroutineScope(Dispatchers.Main).launch {
                 var job = launch {
                     for (i in 0 until 7) {
@@ -55,7 +57,7 @@ class YesOrNoFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.tvYesOrNo -> {
-                context?.let { mBaseViewModel?.getYesOrNo(it) }
+                context?.let { mBaseViewModel.getYesOrNo(it) }
             }
         }
     }

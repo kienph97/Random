@@ -3,6 +3,7 @@
     package="com.kien.random">
 
     <application
+        android:name=".RandomApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_random"
         android:label="@string/app_name"

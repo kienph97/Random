@@ -8,14 +8,17 @@ import androidx.lifecycle.observe
 import com.kien.random.R
 import com.kien.random.databinding.FragmentRPSBinding
 import com.kien.random.presenter.viewmodels.BaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class RPSFragment : BaseFragment(), View.OnClickListener {
     private var mBinding: FragmentRPSBinding? = null
-    private var mViewModel: BaseViewModel? = null
+    @Inject lateinit var mViewModel: BaseViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = FragmentRPSBinding.inflate(layoutInflater)
@@ -25,7 +28,6 @@ class RPSFragment : BaseFragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mViewModel = BaseViewModel()
         initListener()
         initObserver()
         return mBinding?.root
@@ -36,7 +38,7 @@ class RPSFragment : BaseFragment(), View.OnClickListener {
     }
 
     private fun initObserver() {
-        mViewModel?.getRPSLiveData()?.observe(viewLifecycleOwner) {
+        mViewModel.getRPSLiveData().observe(viewLifecycleOwner) {
             CoroutineScope(Dispatchers.Main).launch {
                 var job = launch {
                     for (i in 0 until 6) {
@@ -70,7 +72,7 @@ class RPSFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.tvRun -> {
-                mViewModel?.getRandomRPS()
+                mViewModel.getRandomRPS()
             }
         }
     }

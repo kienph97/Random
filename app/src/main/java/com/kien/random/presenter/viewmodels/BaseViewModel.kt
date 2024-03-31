@@ -7,11 +7,12 @@ import com.kien.random.entities.ColorModel
 import com.kien.random.R
 import com.kien.random.interfaces.ColorModelItf
 import java.util.Random
+import javax.inject.Inject
 
-open class BaseViewModel: ViewModel() {
+open class BaseViewModel @Inject constructor(): ViewModel() {
     private var yesOrNoLiveData = MutableLiveData<String>()
     private var rpsLiveData = MutableLiveData<Int>()
-    private var colorLiveData = MutableLiveData<com.kien.random.entities.ColorModel>()
+    private var colorLiveData = MutableLiveData<ColorModel>()
     private var coinLiveData = MutableLiveData<Int>()
     private var chooseItemLiveData = MutableLiveData<Int>()
     private var diceRandomLiveData = MutableLiveData<ArrayList<Int>>()

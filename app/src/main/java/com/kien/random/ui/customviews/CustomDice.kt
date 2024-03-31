@@ -31,10 +31,6 @@ class CustomDice @JvmOverloads constructor(
                     root?.findViewById<ImageView>(R.id.imvForth)?.isVisible = false
                     root?.findViewById<ImageView>(R.id.imvThird)?.isVisible = false
                     root?.findViewById<ImageView>(R.id.imvSecond)?.isVisible = false
-//                    binding?.imvFirst?.apply {
-//                        isVisible = true
-//                        setImageResource(getIconImage(list.get(i)))
-//                    }
                 }
                 1 -> {
                     root?.findViewById<ImageView>(R.id.imvSecond)?.apply {
@@ -43,10 +39,6 @@ class CustomDice @JvmOverloads constructor(
                     }
                     root?.findViewById<ImageView>(R.id.imvForth)?.isVisible = false
                     root?.findViewById<ImageView>(R.id.imvThird)?.isVisible = false
-//                    binding?.imvSecond?.apply {
-//                        isVisible = true
-//                        setImageResource(getIconImage(list.get(i)))
-//                    }
                 }
                 2 -> {
                     root?.findViewById<ImageView>(R.id.imvThird)?.apply {
@@ -54,20 +46,12 @@ class CustomDice @JvmOverloads constructor(
                         setImageResource(getIconImage(list.get(i)))
                     }
                     root?.findViewById<ImageView>(R.id.imvForth)?.isVisible = false
-//                    binding?.imvThird?.apply {
-//                        isVisible = true
-//                        setImageResource(getIconImage(list.get(i)))
-//                    }
                 }
                 else -> {
                     root?.findViewById<ImageView>(R.id.imvForth)?.apply {
                         isVisible = true
                         setImageResource(getIconImage(list.get(i)))
                     }
-//                    binding?.imvForth?.apply {
-//                        isVisible = true
-//                        setImageResource(getIconImage(list.get(i)))
-//                    }
                 }
             }
         }
