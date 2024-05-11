@@ -10,7 +10,7 @@
         android:id="@+id/ctlList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp15"
         android:layout_marginHorizontal="@dimen/dp10"
         android:visibility="visible"
         android:background="@drawable/shape_bg_item_home">

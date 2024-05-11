@@ -38,6 +38,9 @@
             android:id="@+id/action_homeFragment_to_randomDiceFragment"
             app:destination="@id/randomDiceFragment"
             app:enterAnim="@anim/from_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_rotateBottleFragment"
+            app:destination="@id/rotateBottleFragment" />
     </fragment>
     <fragment
         android:id="@+id/luckyNumberFragment"
@@ -73,4 +76,8 @@
         android:id="@+id/randomDiceFragment"
         android:name="com.kien.random.ui.fragment.RandomDiceFragment"
         android:label="RandomDiceFragment" />
+    <fragment
+        android:id="@+id/rotateBottleFragment"
+        android:name="com.kien.random.ui.fragment.RotateBottleFragment"
+        android:label="RotateBottleFragment" />
 </navigation>

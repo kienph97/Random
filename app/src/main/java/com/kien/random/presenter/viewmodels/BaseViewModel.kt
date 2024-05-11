@@ -16,6 +16,7 @@ open class BaseViewModel @Inject constructor(): ViewModel() {
     private var coinLiveData = MutableLiveData<Int>()
     private var chooseItemLiveData = MutableLiveData<Int>()
     private var diceRandomLiveData = MutableLiveData<ArrayList<Int>>()
+    private var rotateBottleLiveData = MutableLiveData<Int>()
     fun getRandomNumber(start: Int, end: Int): Int {
         val random = Random()
         return random.nextInt(end - start + 1) + start
@@ -58,6 +59,10 @@ open class BaseViewModel @Inject constructor(): ViewModel() {
         }
         diceRandomLiveData.value = list
     }
+
+    fun getRandomRotate() {
+        rotateBottleLiveData.value = getRandomNumber(360, 3600)
+    }
     fun getYesOrNoLiveData() = yesOrNoLiveData
 
     fun getRPSLiveData() = rpsLiveData
@@ -69,4 +74,6 @@ open class BaseViewModel @Inject constructor(): ViewModel() {
     fun getChooseItemLiveData() = chooseItemLiveData
 
     fun getDiceRandomLiveData() = diceRandomLiveData
+
+    fun getRotateBottleLiveData() = rotateBottleLiveData
 }

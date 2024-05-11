@@ -42,6 +42,11 @@ class HomeRepoImpl @Inject constructor(): HomeModelItf {
             id = 7,
             icon = R.drawable.ic_dice,
             title = context.getString(R.string.dice_roller_label)
+        ),
+        HomeModel(
+            id = 8,
+            icon = R.drawable.ic_bottle__2_,
+            title = context.getString(R.string.rotate_bottle_label)
         )
     )
 }

@@ -30,4 +30,6 @@
     <string name="this_feature_will_be_update_in_next_version">This feature will be updated in next version</string>
     <string name="code_color">Code color</string>
     <string name="privacy_policy">Privacy policy</string>
+    <string name="rotate_bottle_label">Rotate Bottle</string>
+    <string name="rotate_label">Rotate</string>
 </resources>
