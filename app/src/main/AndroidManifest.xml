@@ -3,14 +3,14 @@
     package="com.kien.random">
 
     <application
-        android:name=".RandomApplication"
+        android:name=".common.RandomApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_random"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Random">
-        <activity android:name=".MainActivity"
+        <activity android:name=".common.ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

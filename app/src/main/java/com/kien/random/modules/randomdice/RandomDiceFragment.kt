@@ -1,0 +1,68 @@
+package com.kien.random.modules.randomdice
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.isVisible
+import com.kien.random.R
+import com.kien.random.common.ui.fragments.BaseFragment
+import com.kien.random.databinding.FragmentRandomDiceBinding
+import com.kien.random.common.viewmodels.BaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+
+@AndroidEntryPoint
+class RandomDiceFragment : BaseFragment(), View.OnClickListener {
+    private var mBinding: FragmentRandomDiceBinding? = null
+    @Inject lateinit var mViewModel: BaseViewModel
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mBinding = FragmentRandomDiceBinding.inflate(layoutInflater)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        initListener()
+        initObserver()
+        return mBinding?.root
+    }
+
+    private fun initObserver() {
+        mViewModel.getDiceRandomLiveData().observe(viewLifecycleOwner) {
+            mBinding?.imvResult?.drawDice(it)
+        }
+    }
+
+    private fun initListener() {
+        mBinding?.tvRun?.setOnClickListener(this)
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.tvRun -> {
+                val text = mBinding?.edtNumber?.text?.toString()
+                var number = 0
+                if (!text.isNullOrEmpty()) {
+                    number = text.toInt()
+                }
+
+                if (number == 0) {
+                    mBinding?.tvError?.isVisible = true
+                    mBinding?.tvError?.text = context?.getString(R.string.please_input_number_dice)
+                    mBinding?.imvResult?.isVisible = false
+                }else if (number > 4) {
+                    mBinding?.tvError?.isVisible = true
+                    mBinding?.tvError?.text = context?.getString(R.string.maximum_fore_dice)
+                    mBinding?.imvResult?.isVisible = false
+                } else {
+                    mBinding?.tvError?.isVisible = false
+                    mBinding?.imvResult?.isVisible = true
+                    mViewModel.getRandomDice(number)
+                }
+            }
+        }
+    }
+}
